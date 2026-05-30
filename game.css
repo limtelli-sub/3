@@ -1,0 +1,183 @@
+:root {
+  --bg-color: #0f172a;
+  --panel-bg: #1e293b;
+  --card-bg: #334155;
+  --card-front: #3b82f6;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+  --border-radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header {
+  background-color: var(--panel-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.app-title {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
+
+.stats {
+  display: flex;
+  gap: 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  perspective: 1000px;
+}
+
+.card {
+  aspect-ratio: 1;
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card.matched {
+  transform: rotateY(180deg) scale(0.95);
+  opacity: 0.8;
+  cursor: default;
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  user-select: none;
+}
+
+.card-front {
+  background-color: var(--card-bg);
+}
+
+.card-back {
+  background-color: var(--card-front);
+  transform: rotateY(180deg);
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: var(--panel-bg);
+  padding: 40px;
+  border-radius: var(--border-radius);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-content h2 {
+  color: #fbbf24;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 500px) {
+  .card-face { font-size: 2rem; }
+  .game-board { gap: 8px; }
+}
