@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     '스파크': '전기 스파크가 발생했습니다! 위험하니 즉시 전원을 차단하고 전문가에게 상담하세요.'
   };
 
-  const safetyKeywords = ['화재', '스파크', '전기 냄새', '연기', '불꽃', '폭발'];
+  const safetyKeywords = ['화재', '스파크', '전기 냄새', '연기', '불꽃', '폭발', '스파크가 크게 튀는', '누전 (전류 누출)', '단락 (합선)', '과전류(과부하)', '접촉 불량', '절연 파괴 및 노후화'];
 
   function diagnose(text) {
     const lowered = text.toLowerCase();

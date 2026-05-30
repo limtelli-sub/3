@@ -3,61 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>약사고등학교 발표 도우미</title>
-  <link rel="stylesheet" href="style.css">
+  <title>전기 설비 고장 진단 도우미</title>
+  <link rel="stylesheet" href="diagnostic.css">
 </head>
 <body>
   <div class="container">
-    <!-- Main content area -->
-    <main class="main-area">
-      <!-- Title -->
-      <h1 class="app-title">약사고등학교 발표 도우미</h1>
-
-      <!-- Timer Section -->
-      <section class="timer-section">
-        <h2 class="section-title">발표 타이머</h2>
-        <div class="timer-display" id="timer-display">00:00</div>
-        <div class="timer-controls">
-          <button class="btn timer-btn" data-time="60">1분</button>
-          <button class="btn timer-btn" data-time="180">3분</button>
-          <button class="btn timer-btn" data-time="300">5분</button>
-          <button class="btn timer-btn stop-btn" id="stop-timer-btn">정지</button>
-        </div>
-      </section>
-
-      <!-- Draw Result Section -->
-      <section class="draw-section">
-        <h2 class="section-title">발표자 추첨</h2>
-        <div class="draw-result" id="draw-result">
-          <span class="placeholder">추첨 대기 중...</span>
-        </div>
-      </section>
+    <header class="header">
+      <h1>전기 설비 고장 진단</h1>
+    </header>
+    <main class="main-content">
+      <textarea id="problem-input" placeholder="전기 설비 문제를 입력하세요..." rows="4"></textarea>
+      <button id="diagnose-btn" class="btn">진단하기</button>
     </main>
-
-    <!-- Sidebar / Bottom Controls -->
-    <aside class="control-sidebar">
-      <div class="control-group">
-        <label for="name-input">발표자 명단 (이름 또는 번호, 쉼표로 구분)</label>
-        <textarea id="name-input" placeholder="예: 1번, 2번, 홍길동, 김철수"></textarea>
-      </div>
-      
-      <div class="control-group">
-        <label class="checkbox-label">
-          <input type="checkbox" id="exclude-checkbox">
-          이미 뽑힌 사람 다음 번에 제외
-        </label>
-      </div>
-
-      <button class="btn draw-btn" id="draw-btn">추첨하기</button>
-
-      <div class="picked-list-container">
-        <h3>뽑힌 사람 명단</h3>
-        <ul id="picked-list"></ul>
-        <button class="btn reset-btn" id="reset-picked-btn">초기화</button>
-      </div>
-    </aside>
+    <footer class="footer">
+      <p>© 2026 전기 설비 진단 도우미</p>
+    </footer>
   </div>
 
-  <script src="main.js"></script>
+  <!-- Result Modal -->
+  <div class="modal-overlay" id="result-modal" style="display:none;">
+    <div class="modal-content">
+      <h2 id="result-title">진단 결과</h2>
+      <p id="result-text"></p>
+      <button class="btn close-btn" id="close-modal">닫기</button>
+    </div>
+  </div>
+
+  <script src="diagnostic.js"></script>
 </body>
 </html>
